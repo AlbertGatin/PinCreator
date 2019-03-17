@@ -1,8 +1,6 @@
+using Pin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ClientApp
 {
@@ -10,12 +8,22 @@ namespace ClientApp
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            try
+            {
+                byte[] key = Encoding.UTF8.GetBytes("keykeykeykeykey");
+                string[] res = Creator.Create("1848576927564916", Convert.ToBase64String(key), 100);
+                Console.WriteLine(res);
+                for (int i = 0; i < 100; i++)
+                {
+                   // res = Creator.Create(res, Convert.ToBase64String(key));
+                    Console.WriteLine(res[i]); 
+                }
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ошибка теста" + e.ToString());
+            }
         }
     }
 }
